@@ -22,12 +22,17 @@ local_repository(
 # 3. Request the new archive to be mirrored on mirror.bazel.build for more
 #    reliable downloads.
 load("//tensorflow_serving:repo.bzl", "tensorflow_http_archive")
-tensorflow_http_archive(
+# tensorflow_http_archive(
+#     name = "org_tensorflow",
+#     sha256 = "75b8dc9b33afff6f2e2d2e2dacc26dd0973bdcee94eec2af290828c1bc574bdc",
+#     git_commit = "ad6d8cc177d0c868982e39e0823d0efbfb95f04c",
+#     patch = "//third_party/tensorflow:tensorflow.patch",
+# )
+local_repository(
     name = "org_tensorflow",
-    sha256 = "75b8dc9b33afff6f2e2d2e2dacc26dd0973bdcee94eec2af290828c1bc574bdc",
-    git_commit = "ad6d8cc177d0c868982e39e0823d0efbfb95f04c",
-    patch = "//third_party/tensorflow:tensorflow.patch",
+    path = "/home/huangziyang/workspace/framework/tensorflow"
 )
+
 
 # Import all of TensorFlow Serving's external dependencies.
 # Downstream projects (projects importing TensorFlow Serving) need to

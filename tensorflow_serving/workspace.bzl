@@ -37,7 +37,7 @@ def tf_serving_workspace():
     http_archive(
         name = "com_github_libevent_libevent",
         url = "https://github.com/libevent/libevent/archive/release-2.1.12-stable.zip",
-        sha256 = "8836ad722ab211de41cb82fe098911986604f6286f67d10dfb2b6787bf418f49",
+        #sha256 = "8836ad722ab211de41cb82fe098911986604f6286f67d10dfb2b6787bf418f49",
         strip_prefix = "libevent-release-2.1.12-stable",
         build_file = "@//third_party/libevent:BUILD",
     )
@@ -123,11 +123,17 @@ def tf_serving_workspace():
 
     # The Boost repo is organized into git sub-modules (see the list at
     # https://github.com/boostorg/boost/tree/master/libs), which requires "new_git_repository".
-    new_git_repository(
+    # new_git_repository(
+    #     name = "org_boost",
+    #     commit = "b7b1371294b4bdfc8d85e49236ebced114bc1d8f",  # boost-1.75.0
+    #     build_file = "//third_party/boost:BUILD",
+    #     init_submodules = True,
+    #     recursive_init_submodules = True,
+    #     remote = "https://github.com/boostorg/boost",
+    # )
+
+    native.new_local_repository(
         name = "org_boost",
-        commit = "b7b1371294b4bdfc8d85e49236ebced114bc1d8f",  # boost-1.75.0
         build_file = "//third_party/boost:BUILD",
-        init_submodules = True,
-        recursive_init_submodules = True,
-        remote = "https://github.com/boostorg/boost",
+        path = "/home/huangziyang/workspace/framework/dependencies/boost"
     )
